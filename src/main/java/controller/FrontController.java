@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.action.Action;
+import controller.action.DetailAction;
 import controller.action.InsertAction;
 import controller.action.ListAction;
 
@@ -51,7 +52,9 @@ public class FrontController extends HttpServlet {
 			path = "community/insert.jsp";
 		}
 		else if (spath.equals("/detail.do")) {
-			path = "detailView.jsp";
+			Action action = new DetailAction();
+			isRedirect = action.execute(request, response);
+			path = "community/detail.jsp";
 		}
 		else if (spath.equals("/save.do")) {
 			Action action = new InsertAction();
