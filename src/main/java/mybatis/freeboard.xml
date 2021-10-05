@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql mapper --> 
+<mapper namespace="freeboard"> <!-- namespace : 일종의 식별역할의 변수 -->
+
+	<select id="getList" resultType="Freeboard" parameterType="java.util.Map">
+		select * from freeboard f order by idx desc limit #{startNo}, #{pageSize}
+	</select>
+	
+	<select id="selectByIdx" resultType="Freeboard" parameterType="int">
+		select * from freeboard where idx=#{idx}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from freeboard
+	</select>
+	
+	<insert id="insert" parameterType="Freeboard">
+		insert into freeboard (name, password, subject, content, ip) 
+		values (#{name}, #{password}, #{subject}, #{content}, #{ip})
+	</insert>
+	
+	<update id="update" parameterType="Freeboard">
+		update freeboard set subject = #{subject}, content = #{content}
+		where idx = #{idx}
+	</update>
+	
+	<delete id="delete" parameterType="java.util.Map">	<!-- 파라미터 Map으로 써보기 -->
+		delete from freeboard where idx = #{idx} and password = #{password};
+	</delete>
+	
+	<select id="passwordCheck" resultType="Freeboard" parameterType="java.util.Map">
+		select * from freeboard where idx = #{idx} and password = #{password}
+	</select>
+		
+	<!-- 나중에 customer.xml로 이동 -->
+	<select id="loginCheck" parameterType="java.util.Map" resultType="SessionDto">
+		select * from customer where email = #{email} and password = #{password}
+	</select>
+	
+	<update id="readCount" parameterType="int">
+		update freeboard set readCount = readCount + 1 where idx = #{idx}
+	</update>
+	
+	
+</mapper>
+<!-- ${ } : 표현식. 중괄효 안 수식에 대한 결과값을 구해서 출력 
+	 #{ } : 무조건 문자열('  ' 기호사용)로 중괄호 안의 값을 처리한다. -->
+
+
+
+
+
+
+
+

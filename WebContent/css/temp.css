@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+table {
+	width : 70%;
+	margin : auto;
+}
+
+th {
+	text-align: center;
+	border-radius: 3px;
+	border : 1px solid #5C6BC0;
+	background-color: #5C6BC0;
+	color: white;
+	font-size:90%;
+	width: 150px;
+}
+
+input[type=submit], input[type=reset], input[type=button] {
+	background-color: #5C6BC0;
+    color:white;
+    padding: 7px;
+    cursor: pointer;
+	text-align:center;
+	border-radius: 4px;
+	border:none;
+}
