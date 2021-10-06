@@ -15,8 +15,9 @@ import dto.Freeboard;
 
 public class DetailAction implements Action {
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ActionForward forward = new ActionForward();
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		int pageNo = Integer.parseInt(request.getParameter("page"));
@@ -47,7 +48,8 @@ public class DetailAction implements Action {
 		request.setAttribute("bean", bean);
 		//pageContext.forward("detailView.jsp");
 		
-		boolean isRedirect = false;
-		return isRedirect;
+		forward.isRedirect = false;
+		forward.url = "community/detail.jsp";
+		return forward;
 	}
 }

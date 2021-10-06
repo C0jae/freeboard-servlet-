@@ -14,12 +14,12 @@ function post_data() {
 <link rel="stylesheet" href="css/temp.css">
 </head>
 <body>
-<%-- <c:if test="${sessionScope.user == null}">	<!-- sessionScope. 생략가능 -->
+<c:if test="${sessionScope.user == null}">	<!-- sessionScope. 생략가능 -->
 	<script type="text/javascript">
 		alert('글쓰기는 로그인을 해야합니다.');
-		location.href='../loginView.jsp';
+		location.href='login.do';
 	</script>
-</c:if> --%>
+</c:if>
 
 <h3>동아리 커뮤니티</h3>
 <hr>

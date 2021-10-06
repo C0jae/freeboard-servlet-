@@ -50,7 +50,7 @@
 			</li>
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
-		<a class="button" href="updateAction.jsp?idx=${bean.idx}&page=${page}">수정</a>
+		<a class="button" href="update.do?idx=${bean.idx}&page=${page}">수정</a>
 		<a class="button" onclick="deleteSet()">삭제</a>
 		<a class="button" href="list.do?page=${page}">목록</a>
 	</div>
@@ -161,7 +161,7 @@
 	function deleteCmt(cmtidx, idx, page) {
 		const yn = confirm('댓글을 삭제하시겠습니까?');
 		if (yn){
-			location.href="commentAction.jsp?del=&cmtidx=" + cmtidx + "&idx=" + idx + "&page=" + page;
+			location.href="comment.do?del=&cmtidx=" + cmtidx + "&idx=" + idx + "&page=" + page;
 		}
 		else {
 			alert('댓글 삭제를 취소합니다.');

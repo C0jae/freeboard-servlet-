@@ -10,9 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.action.Action;
+import controller.action.ActionForward;
+import controller.action.CommentAction;
+import controller.action.DeleteAction;
 import controller.action.DetailAction;
 import controller.action.InsertAction;
 import controller.action.ListAction;
+import controller.action.LoginAction;
+import controller.action.LogoutAction;
+import controller.action.ModifyAction;
+import controller.action.UpdateAction;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -34,40 +41,67 @@ public class FrontController extends HttpServlet {
 		// 콘솔출력
 		//System.out.println(request.getContextPath());
 		//System.out.println(request.getServletPath());
+		ActionForward forward = null;
 		
 		String spath = request.getServletPath();
-		boolean isRedirect = false;
-		String path = "home.jsp";
+		String path = "index.jsp";
 		String url = "./";	// 또는 request.getContextPath();
 		
 		if (spath.equals("/list.do")) {
 			Action action = new ListAction();
-			isRedirect = action.execute(request, response);	// 해당 코드가 많기 때문에 -> Action 구현 클래스로 변경
-			path = "community/list.jsp";
+			forward = action.execute(request, response);	// 해당 코드가 많기 때문에 -> Action 구현 클래스로 변경
+			forward.setUrl("community/list.jsp");
 		}
 		else if (spath.equals("/login.do")) {
 			path = "login.jsp";
+			forward = new ActionForward(false, path);
 		}
 		else if (spath.equals("/insert.do")) {
 			path = "community/insert.jsp";
+			forward = new ActionForward(false, path);
 		}
 		else if (spath.equals("/detail.do")) {
 			Action action = new DetailAction();
-			isRedirect = action.execute(request, response);
-			path = "community/detail.jsp";
+			forward = action.execute(request, response);
 		}
 		else if (spath.equals("/save.do")) {
 			Action action = new InsertAction();
-			isRedirect = action.execute(request, response);
+			forward = action.execute(request, response);
 			url = "list.do";
+			forward.setUrl(url);	// action에서 줘도되고 여기서 값을 줘도 된다. vs list.do 와 비교
+		} // 이 시점에서 forward에 isRedirect와 url 값이 저장되어 있기만 하면 된다.
+		else if(spath.equals("/update.do")) {
+			Action action = new UpdateAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/modify.do")) {
+			Action action = new ModifyAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/delete.do")) {
+			Action action = new DeleteAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/comment.do")) {
+			Action action = new CommentAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/loginAction.do")) {
+			Action action = new LoginAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/logout.do")) {
+			Action action = new LogoutAction();
+			forward = action.execute(request, response);
 		}
 		
-		if (!isRedirect) {
-			RequestDispatcher rd = request.getRequestDispatcher(path);
+		
+		if (!forward.isRedirect()) {	// 타입이 boolean 일때는 getXXX 아니고 isXXX 이다.
+			RequestDispatcher rd = request.getRequestDispatcher(forward.getUrl());
 			rd.forward(request, response);
 		}
 		else {
-			response.sendRedirect(url);
+			response.sendRedirect(forward.getUrl());
 		}
 		
 	}

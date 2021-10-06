@@ -17,8 +17,9 @@ import dto.PageDto;
 public class ListAction implements Action {
 
 	@Override
-	public boolean execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ActionForward foward = new ActionForward();
 		
 		//비지니스 로직을 처리하는 jsp 파일
 		FreeboardDao dao = FreeboardDao.getInstance();
@@ -41,8 +42,10 @@ public class ListAction implements Action {
 		request.setAttribute("pageDto", pageDto);     //페이지처리에 필요한 값들
 		request.setAttribute("list", list);
 //		pageContext.forward("listView.jsp");
-		boolean isRedirect=false;
-		return isRedirect;
+		
+		foward.isRedirect = false;
+		foward.url = "list.jsp";
+		return foward;
 	}
 
 }
