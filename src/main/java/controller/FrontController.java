@@ -14,6 +14,8 @@ import controller.action.ActionForward;
 import controller.action.CommentAction;
 import controller.action.DeleteAction;
 import controller.action.DetailAction;
+import controller.action.GalleryListAction;
+import controller.action.GalleryRegistAction;
 import controller.action.InsertAction;
 import controller.action.ListAction;
 import controller.action.LoginAction;
@@ -92,6 +94,14 @@ public class FrontController extends HttpServlet {
 		}
 		else if(spath.equals("/logout.do")) {
 			Action action = new LogoutAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/gallery.do")) {
+			Action action = new GalleryListAction();
+			forward = action.execute(request, response);
+		}
+		else if(spath.equals("/regist.do")) {
+			Action action = new GalleryRegistAction();
 			forward = action.execute(request, response);
 		}
 		

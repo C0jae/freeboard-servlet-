@@ -26,5 +26,6 @@
 		<br>${user.name}(${user.email}) 님 반갑습니다.<br>
 		<a href="logout.do">로그아웃</a>
 	</c:if>
+	<a href="gallery.do">갤러리</a>
 </body>
 </html>
