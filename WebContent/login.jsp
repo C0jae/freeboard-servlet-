@@ -30,8 +30,12 @@
 	}
 </style>
 
+<link rel="stylesheet" href="./css/flexbox2.css?v=3">	<!-- ./ : 현재위치 아래 css 폴더 -->
+
 </head>
 <body>
+<%@ include file="top.jsp" %>
+<section>
 	<div>
 		<form action="loginAction.do" method="post">
 			<input type="text" name="userid" placeholder="아이디(이메일)을 입력하세요.">
@@ -42,5 +46,7 @@
 		
 	
 	</div>
+</section>
+<%@ include file="bottom.jsp" %>
 </body>
 </html>

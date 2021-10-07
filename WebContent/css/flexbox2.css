@@ -1,0 +1,55 @@
+@charset "UTF-8";
+a.menu {
+    text-decoration: none;
+    color: white;
+}
+
+.container > li {
+    /* border: 1px solid yellow; */
+    list-style: none;
+    font-size: 1.5em;
+    padding: 8px 12px;
+    margin: 10px;
+}
+
+.container > li:hover { /* 마우스가 해당 li에 올라가 있을때 */
+    background-color: coral;
+    border-radius: 4px;
+}
+
+.container {
+    background-color: brown;
+    display: flex;  /* 한줄로 정렬 */
+    justify-content: center;
+    padding: 8px 12px;
+}
+
+/* 반응형으로 레이아웃 만들기 
+    해상도 최대 768px 까지 동작하도록 설정*/
+@media screen and (max-width:768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .container > li{
+        text-align: center;
+    }
+}
+
+/*  마진과 마진이 만났을 때 마진 상쇄의 
+경우가 있습니다.  */
+html,body {
+    height: 100%;
+}
+.map_wrap {
+    display: flex;
+	flex-direction: column;
+	height: 100%;	
+}
+.footer {
+    border-top: 3px solid tomato;
+}
+.footer a,p {
+    font-size: 12px;    /* 부모 태므인 footer 태크의 font-size를 지정해야 em을 사용할 수 있다. */
+    color:brown;
+}

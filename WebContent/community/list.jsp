@@ -8,8 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>동아리 커뮤니티</title>
 <link rel="stylesheet" href="css/boardlist.css?v=3">
+<link rel="stylesheet" href="css/flexbox2.css?v=3">
 </head>
 <body>
+<%@ include file="../top.jsp" %>	<!-- ../ : 현재 위치에서 한단계 위 상위폴더 -->
+<section>
 <h3>동아리 커뮤니티</h3>
 <hr>
 <div style="margin:auto;">
@@ -79,6 +82,8 @@
 </div> 
 
 </div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>
 
