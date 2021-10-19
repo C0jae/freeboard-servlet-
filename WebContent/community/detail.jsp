@@ -172,7 +172,6 @@
 		}
 	}
 </script>
-<%@ include file="../top.jsp" %>
 </body>
 </html>
 

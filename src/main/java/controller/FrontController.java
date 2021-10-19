@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
-	// 요청Method 구병없이 실행 -> doGet() 또는 doPost()메소드 실행내용 있으면 실행.
+	// 요청Method 구별없이 실행 -> doGet() 또는 doPost()메소드 실행내용 있으면 실행.
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 콘솔출력
